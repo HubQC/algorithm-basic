@@ -1,0 +1,19 @@
+{
+    "name": "hubqc/algorithm",
+    "description": "algorithm",
+    "authors": [
+        {
+            "name": "HubQC",
+            "email": "staranderson1900@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Algorithm\\": "src/"
+        },
+        "files": [
+           "src/Helpers/helpers.php"
+        ]
+    }
+}
