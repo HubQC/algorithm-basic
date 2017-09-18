@@ -1,6 +1,6 @@
 <?php
 
-namespace Heap\MaxHeap;
+namespace Algorithm\Heap;
 
 
 // 最大堆
