@@ -2,6 +2,9 @@
 
 require __DIR__ . './../vendor/autoload.php';
 
+use Algorithm\Sort\BasicSort;
+use Algorithm\Sort\AdvancedSort;
+
 define('bracket', '<br>---------------------------------------------------<br>');
 
 $insert_bracket = function () {
