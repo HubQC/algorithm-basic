@@ -17,29 +17,36 @@ class MaxHeap
 
     // @TODO: optimize for array_swap
 
-    public function __construct($size)
+    public function __construct( $size, $autoArray = true )
     {
-        for ($i = 0; $i <= $size; $i++) {
-            $this->insert(rand() * 100);
+        if ( !$autoArray ) {
+            $this->data = [];
+            $size = -1;
+
+            return;
+        }
+
+        for ( $i = 0; $i <= $size; $i++ ) {
+            $this->insert( rand() * 100 );
         }
     }
 
-    public function insert($item)
+    public function insert( $item )
     {
         $this->data[] = $item;
         $this->size++;
 
-        $this->shiftUp($this->size);
+        $this->shiftUp( $this->size );
     }
 
     public function extractMax()
     {
         $max = $this->data[1];
 
-        array_swap($this->data, 1, $this->size);
+        array_swap( $this->data, 1, $this->size );
         $this->size--;
 
-        $this->shiftDown(1);
+        $this->shiftDown( 1 );
 
         return $max;
     }
@@ -49,30 +56,30 @@ class MaxHeap
         return $this->size;
     }
 
-    private function shiftUp($index)
+    private function shiftUp( $index )
     {
-        while ($index > 1 && $this->data[$index] > $this->size[$index / 2]) {
-            array_swap($this->data, $index, $index / 2);
+        while ( $index > 1 && $this->data[$index] > $this->size[$index / 2] ) {
+            array_swap( $this->data, $index, $index / 2 );
             $index /= 2;
         }
     }
 
-    private function shiftDown($index)
+    private function shiftDown( $index )
     {
-        while (2 * $index <= $this->size) {
+        while ( 2 * $index <= $this->size ) {
             $leftChild  = $index * 2;
             $rightChild = $leftChild + 1;
             $child      = $leftChild;
 
-            if ($rightChild <= $this->size && $this->data[$leftChild] < $this->data[$rightChild]) {
+            if ( $rightChild <= $this->size && $this->data[$leftChild] < $this->data[$rightChild] ) {
                 $child = $rightChild;
             }
 
-            if ($this->data[$index] >= $this->data[$child]) {
+            if ( $this->data[$index] >= $this->data[$child] ) {
                 break;
             }
 
-            array_swap($this->data, $index, $child);
+            array_swap( $this->data, $index, $child );
             $index = $child;
         }
     }
