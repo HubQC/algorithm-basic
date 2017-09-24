@@ -2,8 +2,6 @@
 
 namespace Algorithm\Sort;
 
-use Algorithm\Sort\Sort;
-
 class AdvancedSort extends Sort
 {
 

@@ -18,8 +18,12 @@ class MaxHeap
 
 	// @TODO: optimize for array_swap
 
-	public function __construct ( $size )
+	public function __construct ( $size, $autoFill = false )
 	{
+		if ( !$autoFill ) {
+			return ;
+		}
+
 		for ( $i = 0; $i <= $size; $i++ ) {
 			$this->insert( rand() * 100 );
 		}
