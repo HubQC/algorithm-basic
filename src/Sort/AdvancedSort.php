@@ -8,6 +8,7 @@ class AdvancedSort extends Sort
 	protected $methods
 		= [
 			'mergeSort',
+			'quickSort'
 		];
 
 	// NlogN

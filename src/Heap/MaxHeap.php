@@ -6,7 +6,6 @@ namespace Algorithm\Heap;
 // 最大堆
 class MaxHeap
 {
-
 	// for node(i)
 	// parent(i) = i / 2;
 	// left child = i * 2
@@ -94,4 +93,5 @@ class MaxHeap
 	{
 		return __METHOD__;
 	}
+
 }
