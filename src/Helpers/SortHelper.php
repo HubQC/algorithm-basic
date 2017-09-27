@@ -2,17 +2,19 @@
 
 namespace Algorithm\Helpers;
 
-class SortTestHelper
+class SortHelper
 {
 	private $array_length;
 	private $leftborder;
 	private $rightBorder;
+	private $numberPerLine;
 
 	public function __construct($array_length, $leftborder, $rightBorder)
 	{
 		$this->array_length = $array_length;
 		$this->leftborder = $leftborder;
 		$this->rightBorder = $rightBorder;
+		$this->numberPerLine = 10;
 	}
 
 	/**
@@ -64,11 +66,26 @@ class SortTestHelper
 		return true;
 	}
 
-	public function printArray ( Array $array )
+	public function setNumberPerLine ( $number )
 	{
-		$buffer = '[' . implode(', ', $array) . ']';
+		$this->numPerLine = $number;	
+	}
 
-		return $buffer;
+	public function printArray ( Array $array)
+	{
+		$numPerLine = $this->numberPerLine;
+		$size = count($array);
+		$buffer = '';
+
+		foreach ($array as $key => $value) {
+			$buffer .= $value . ', ';
+			$pos = $key + 1;
+			if ($pos % $numPerLine == 0 && $pos != $size) {
+				$buffer .= PHP_EOL;	
+			}
+		}
+
+		return  '[' . PHP_EOL . $buffer . PHP_EOL . ']';
 	}
 
 	private function _findMin ( Array $array )

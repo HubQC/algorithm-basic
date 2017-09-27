@@ -2,7 +2,7 @@
 
 namespace Algorithm\Sort;
 
-use Algorithm\Helpers\SortTestHelper;
+use Algorithm\Helpers\SortHelper;
 
 abstract class Sort
 {
@@ -13,7 +13,7 @@ abstract class Sort
 	protected $methods     = [];
 	protected $helper;
 
-	public function __construct ( $method_code = 0, SortTestHelper $helper )
+	public function __construct ( $method_code = 0, SortHelper $helper )
 	{
 		$this->helper = $helper;
 
@@ -32,10 +32,10 @@ abstract class Sort
 		$start = microtime( true );
 		$this->$sort();	// sort array
 		$end            = microtime( true );
-		$execution_time = $end - $start;
+		$execution_time = ($end - $start) * 1000;
 
 		$msg .= 'Sorted:   ' . $this->helper->printArray( $this->array ) . "\n" ;
-		$msg .= 'Time Spent: ' . $execution_time . "\n";
+		$msg .= 'Time Spent: ' . $execution_time . 'ms' . "\n";
 
 		return $msg;
 	}

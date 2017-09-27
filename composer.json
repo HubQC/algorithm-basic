@@ -13,7 +13,7 @@
             "Algorithm\\": "src/"
         },
         "files": [
-           "src/Helpers/helpers.php"
+           "src/helpers.php"
         ]
     }
 }
