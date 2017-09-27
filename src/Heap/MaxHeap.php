@@ -2,35 +2,36 @@
 
 namespace Algorithm\Heap;
 
-
 // 最大堆
 class MaxHeap
 {
 	// for node(i)
-	// parent(i) = i / 2;
-	// left child = i * 2
-	// right child =i * 2 + 1;
-	// array[0, 1, 2, 3, 4, 5, 6, 7]
+	// parent(i)   = i / 2;
+	// left child  = i * 2
+	// right child = i * 2 + 1;
+	// array[x ,0, 1, 2, 3, 4, 5, 6, 7]
+	//             0
+	//            / \
+	//          1    2
+	//         / \  / \
+	//        3  4 5   6
+	//       /
+	//      7
 
-	private $data = [];
+	private $heap = [];
 	private $size = -1;
 
 	// @TODO: optimize for array_swap
 
-	public function __construct ( $size, $autoFill = false )
+	public function __construct ()
 	{
-		if ( !$autoFill ) {
-			return ;
-		}
-
-		for ( $i = 0; $i <= $size; $i++ ) {
-			$this->insert( rand() * 100 );
-		}
+		$this->size = 0;
+		$this->heap[] = 0;
 	}
 
 	public function insert ( $item )
 	{
-		$this->data[] = $item;
+		$this->heap[] = $item;
 		$this->size++;
 
 		$this->shiftUp( $this->size );
@@ -38,10 +39,10 @@ class MaxHeap
 
 	public function extractMax ()
 	{
-		$max = $this->data[1];
+		$max = $this->heap[1];
 
-		// array_swap( $this->data, 1, $this->size );
-		$this->data[1] = $this->data[$this->size];
+		// array_swap( $this->heap, 1, $this->size );
+		$this->heap[1] = $this->heap[$this->size];
 		$this->size--;
 
 		$this->shiftDown( 1 );
@@ -51,13 +52,14 @@ class MaxHeap
 
 	public function getSize ()
 	{
-		return $this->size;
+		// return $this->size;
+		return count($this->heap);
 	}
 
 	private function shiftUp ( $index )
 	{
-		while ( $index > 1 && $this->data[$index] > $this->size[$index / 2] ) {
-			array_swap( $this->data, $index, $index / 2 );
+		while ( $index > 1 && $this->heap[$index] > $this->size[$index / 2] ) {
+			array_swap( $this->heap, $index, $index / 2 );
 			$index /= 2;
 		}
 	}
@@ -69,16 +71,16 @@ class MaxHeap
 			$rightChild  = $leftChild + 1;
 			$largerChild = $leftChild;
 
-			if ( $rightChild <= $this->size && $this->data[$leftChild] < $this->data[$rightChild] ) {
+			if ( $rightChild <= $this->size && $this->heap[$leftChild] < $this->heap[$rightChild] ) {
 				$largerChild = $rightChild;
 			}
 
-			if ( $this->data[$index] >= $this->data[$largerChild] ) {
+			if ( $this->heap[$index] >= $this->heap[$largerChild] ) {
 				break;
 			}
 
 			// TODO: assign value instead of swapping value
-			array_swap( $this->data, $index, $largerChild );
+			array_swap( $this->heap, $index, $largerChild );
 			$index = $largerChild;
 		}
 	}
