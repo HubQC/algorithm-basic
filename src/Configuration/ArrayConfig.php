@@ -11,7 +11,7 @@ class ArrayConfig
 	const UPDATED_INSERTION = 2;
 
 	// Advanced
-	const MERGESORT = 0;
-	const QUICKSORT = 1;
+	const MERGE = 0;
+	const QUICK = 1;
 
 }

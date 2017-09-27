@@ -3,12 +3,13 @@
 require __DIR__ . './../vendor/autoload.php';
 
 use Algorithm\Heap\HeapSort;
+use Algorithm\Helpers\SortTestHelper AS Helper;
 
-$array = [ 4, 2, 53, 6523, 41];
+$config = [ 20, 0, 100];
+$helper = new Helper( ... $config );
 
 $Hsort = new HeapSort($array);
 
 $sorted = $Hsort->sort1();
 
 print_r($sorted);
-
