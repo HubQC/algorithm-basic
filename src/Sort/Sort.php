@@ -34,8 +34,8 @@ abstract class Sort
 		$end            = microtime( true );
 		$execution_time = $end - $start;
 
+		$msg .= 'Sorted:   ' . $this->helper->printArray( $this->array ) . "\n" ;
 		$msg .= 'Time Spent: ' . $execution_time . "\n";
-		$msg .= 'Sorted: ' . $this->helper->printArray( $this->array ) . "\n" ;
 
 		return $msg;
 	}
