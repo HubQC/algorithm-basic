@@ -10,11 +10,18 @@ class MaxHeap
 	// left child  = i * 2
 	// right child = i * 2 + 1;
 	// array[x ,0, 1, 2, 3, 4, 5, 6, 7]
-	//             0
-	//            / \
-	//          1    2
-	//         / \  / \
-	//        3  4 5   6
+	//              __0__
+	//             /     \ 
+	//           _1_     _2_
+	//          /   \   /   \
+	//        _3_____4_5_____6_  
+	//       /
+	//      7
+	//                0  
+	//             /     \ 
+	//            1       2 
+	//          /   \   /   \
+	//         3     4 5     6   
 	//       /
 	//      7
 
@@ -88,7 +95,7 @@ class MaxHeap
 	// @TODO: print tree on page
 	public function treePrint ()
 	{
-
+		
 	}
 
 	public function __toString ()
