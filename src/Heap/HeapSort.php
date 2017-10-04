@@ -2,7 +2,6 @@
 
 namespace Algorithm\Heap;
 
-
 class HeapSort
 {
 

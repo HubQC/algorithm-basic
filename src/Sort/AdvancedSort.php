@@ -96,4 +96,9 @@ class AdvancedSort extends Sort
 	{
 
 	}
+
+	private function _quickSort ( $left, $right )
+	{
+		
+	}
 }
