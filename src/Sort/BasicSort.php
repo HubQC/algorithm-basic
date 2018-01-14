@@ -10,6 +10,11 @@ class BasicSort extends Sort
             'updatedInsertionSort',
         ];
 
+    /*
+    | --------------------------
+    |  Selection Sort
+    | --------------------------
+    */
     public function selectionSort()
     {
         $size = sizeof($this->array);
@@ -30,6 +35,11 @@ class BasicSort extends Sort
         return;
     }
 
+    /*
+    | --------------------------
+    |  Insertion Sort
+    | --------------------------
+    */
     public function insertionSort()
     {
         $size = sizeof($this->array);

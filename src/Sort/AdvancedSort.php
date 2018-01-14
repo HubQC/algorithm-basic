@@ -5,75 +5,93 @@ namespace Algorithm\Sort;
 class AdvancedSort extends Sort
 {
 
-	protected $methods
-		= [
+	protected $methods = [
 			'mergeSort',
 			'quickSort'
-		];
+	];
+
+
+	/**
+	|---------------------------------------------------------------------------------- 
+	| 	Merge Sort
+	|---------------------------------------------------------------------------------- 
+	*/
 
 	// NlogN
 	// Extra O(N) space
 	// top to btm
 	public function mergeSort ()
 	{
-		$this->__mergeSort( $this->array, 0, sizeof( $this->array ) - 1 );
+		$this->__mergeSort( 0, sizeof( $this->array ) - 1 );
 	}
 
 	// optimize: 1. merge only when arr[mid] > arr[mid+1]
 	//           2. when r - l <= 15(a number), start using insertion sort {from position L to R}
 	// [l...r] sort
-	private function __mergeSort ( $array, $l, $r )
+	private function __mergeSort ( $l, $r )
 	{
 		if ( $l >= $r ) {
 			return;
 		}
 
-		$size = sizeof( $array );
 		$mid  = ceil( ( $r - $l ) / 2 + $l );
+		// devide && conquer
+		$this->__mergeSort( $l, $mid );
+		$this->__mergeSort( $mid + 1, $r );
 
-		// $left = array_slice($array, $mid);
-		list( $left, $right ) = array_chunk( $array, $mid );
-		$this->__mergeSort( $left, 0, $mid );
-		$this->__mergeSort( $right, $mid + 1, $size );
-
-		$array = $this->__merge( $left, $right );
+		$array = $this->__merge( $left, $mid, $right );
 	}
 
-	private function __merge ( $left, $right )
+	/**
+	 * Merge [$left, ... , $mid] and [$mid+1, ..., $right]
+	 * 
+	 * @param  [int] $left  [left border]
+	 * @param  [int] $mid   []
+	 * @param  [int] $right [description]
+	 * @return [array]        [description]
+	 */
+	private function __merge ( $left, $mid, $right )
 	{
-		$i = 0; // current left element
-		$j = 0; // current right element
-		$k = 0; // current element needs fill
+		$i = $left; // current left element
+		$j = $mid + 1; // current right element
+		// $k = $i; // current element needs fill
 
-		$l           = sizeof( $left );
-		$r           = sizeof( $right );
-		$full_length = $l + $r - 1;
+		$l = $mid - 1; // left border
+		$r = $right;    // right border
 
-		$a = [];
+	// 	$a = [];
 
-		while ( $k <= $full_length ) {
-			while ( $i < $l && $j < $r ) {
-				if ( $left[$i] > $right[$j] ) {
-					$a[] = $right[$j++];
-				} else {
-					$a[] = $left[$i++];
-				}
+		while ( $i < $j ) {
+			if ( $this->array[$i] > $this->array[$j] ) {
+				array_swap( $this->array, $i, $j );
 			}
 
-			// only right element left
-			while ( $i >= $l && $j < $r ) {
-				$a[] = $right[$j++];
-			}
-
-			// only left element left
-			while ( $j >= $r && $i < $l ) {
-				$a[] = $left[$i++];
-			}
-
-			$k++;
+			$i++;
 		}
 
-		return $k;
+		// while ( $k <= $r ) {
+		// 	while ( $i < $l && $j < $r ) {
+		// 		if ( $left[$i] > $right[$j] ) {
+		// 			$a[] = $right[$j++];
+		// 		} else {
+		// 			$a[] = $left[$i++];
+		// 		}
+		// 	}
+
+		// 	// only right element left
+		// 	while ( $i >= $l && $j < $r ) {
+		// 		$a[] = $right[$j++];
+		// 	}
+
+		// 	// only left element left
+		// 	while ( $j >= $r && $i < $l ) {
+		// 		$a[] = $left[$i++];
+		// 	}
+
+		// 	$k++;
+		// }
+
+	// 	return $k;
 	}
 
 	// merge sort from btm to top
@@ -88,6 +106,12 @@ class AdvancedSort extends Sort
 			}
 		}
 	}
+
+	/**
+	|---------------------------------------------------------------------------------- 
+	| 	Quick Sort
+	|---------------------------------------------------------------------------------- 
+	*/
 
 	// [ < 4, 4, > 4 ]
 	// [v, .... < v , ... > v, i]
