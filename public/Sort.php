@@ -8,9 +8,11 @@ use Algorithm\Configuration\ArrayConfig;
 use Algorithm\Helpers\SortHelper as Helper;
 
 /** Prepare Area */
-$config = [ 20, 0, 1000 ];
-$helper = new Helper(... $config);
-$helper->setNumberPerline(15);
+// $config = [ 20, 0, 1000 ];
+// $config = [ 20, 0, 100 ];
+$config = [ 10, 0, 100 ];
+$helper = new Helper( ... $config );
+$helper->setNumberPerline( 15 );
 
 /**  Sort  **/
 // OPTIONS FOR ARRAY SORTING:
@@ -18,13 +20,13 @@ $helper->setNumberPerline(15);
 // MERGE, QUICK
 $toCompare =[
 	// BASIC SORT
-    new BasicSort(ArrayConfig::INSERTION, $helper),
-    new BasicSort(ArrayConfig::SELECTION, $helper),
-    new BasicSort(ArrayConfig::UPDATED_INSERTION, $helper),
+    new BasicSort( ArrayConfig::INSERTION, $helper ),
+    new BasicSort( ArrayConfig::SELECTION, $helper ),
+    new BasicSort( ArrayConfig::UPDATED_INSERTION, $helper ),
 
 	// ADVANCED SORT
-
+    new AdvancedSort( ArrayConfig::MERGE, $helper ),
 ] ;
 
 /** Display **/
-display($toCompare);
+display( $toCompare );
