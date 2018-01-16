@@ -1,7 +1,17 @@
 <?php
 
+
+namespace Algorithm\UnionFind;
+
 class UnionFind 
 {
+
+	/*
+	|   element |  0  |1
+	|   ------------------------------------------------
+	|    id     |  0 |1
+	|*/ 
+
 	private $id;
 	private $count;
 
@@ -10,7 +20,8 @@ class UnionFind
 		$this->count = $n;
 		$this->id = [];	
 
-		for ($i=0; $i < $n ; $i++) { 
+
+		for ( $i = 0; $i < $n ; $i++ ) { 
 			$this->id[$i] = $i; 
 		}
 	}
@@ -18,12 +29,29 @@ class UnionFind
 
 	public function union($p, $q) 
 	{
-		
+
+		$pId = $this->find( $p );	
+		$qId = $this->find( $q );	
+
+		if ( $pId == $qId ) {
+			return ;
+		}
+
+		for ($i = 0; $i < $this->count; $i ++) { 
+			// find p element, then union with q
+			if ( $this->id[$i] == $pId ) {
+				$this->id[$i] = $qId;
+			}	
+		}
 	}
 
-	public function find($p) 
+	public function find( $p ) 
 	{
-		
+		if ( $p < 0 || $p > $this->count ) {
+			throw new Exception("out of range", 1);
+			
+		}
+		return $this->id[$p];	
 	}
 
 	public function isConnected() 
