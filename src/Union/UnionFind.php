@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Algorithm\UnionFind;
+namespace Algorithm\Union;
 
 class UnionFind 
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Algorithm\UnionFind;
+namespace Algorithm\Union;
 
 class PathCompressionUnion
 {
