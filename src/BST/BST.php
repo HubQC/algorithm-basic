@@ -3,9 +3,7 @@
 namespace Algorithm\BST;
 
 use Algorithm\BST\Node as Node;
-/**
-* 
-*/
+
 class BST
 {
 	protected $node;
