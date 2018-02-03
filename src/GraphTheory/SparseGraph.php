@@ -2,6 +2,8 @@
 
 namespace Algorithm\GraphTheory;
 
+use GraphInterfafce as Graph;
+
 /*
 | ----------------------------------------
 |  稠密图 - 邻接矩阵 ( Adjacency Matrix)
@@ -21,7 +23,7 @@ namespace Algorithm\GraphTheory;
 | 						  3  0 1 0 0
 |
 |*/
-class SparseGraph 
+class SparseGraph implements Graph
 {
 	protected $m; // 边
 	protected $n; // 顶点
@@ -69,7 +71,7 @@ class SparseGraph
 		$this->M ++ ;
 	}
 
-	public function hasEdge( Int $v, $int w ) 
+	public function hasEdge( Int $v, Int $w ) 
 	{
 		return G[$v][$w];	
 	}

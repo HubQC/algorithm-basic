@@ -1,6 +1,6 @@
 <?php
 
-namespace Algorithm\GraphTheory;
+namespace Algorithm\GraphTheory\Tool;
 
 class Path
 {

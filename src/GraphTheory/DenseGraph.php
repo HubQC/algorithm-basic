@@ -2,11 +2,11 @@
 
 namespace Algorithm\GraphTheory;
 
-use GraphInterface;
+use GraphInterface as Graph;
 
 /*
 | ------------------------------------
-| 稀疏图 - 邻接表 ( Adjacency Lists )
+| 稠密图 - 邻接表 ( Adjacency Lists )
 | Sparse Graph
 | ------------------------------------
 |
@@ -69,7 +69,7 @@ class DenseGraph implements Graph
 		$this->m ++ ;
 	}
 
-	public function hasEdge( Int $v, $int w ) 
+	public function hasEdge( Int $v, Int $w ) 
 	{
 		// check n, w [0, n)
 
