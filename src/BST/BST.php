@@ -9,6 +9,8 @@ class BST
 	protected $node;
 	protected $leftNode;
 	protected $rightNode;
+
+	protected $size;
 	
 	function __construct( $key, $value, Node $left = null, Node $right = null )
 	{
@@ -19,7 +21,12 @@ class BST
 
 	public function size() 
 	{
-		
+		return $this->size;	
+	}
+
+	public function count ( $arguments )
+	{
+		return $this->size;	
 	}
 
 	public function isEmpty() 
@@ -30,9 +37,9 @@ class BST
 	/**
 	 * 向以Node为根的BST中，插入节点 （$key, $val)
 	 * 返回插入新节点后的BST的根
-	 *  递归写法 （ try  非递归 )
+	 * 递归写法 （ try  非递归 )
 	 */ 	
-	public function insert(Node $node, $key, $val ) 
+	public function insert( Node $node, $key, $val ) 
 	{
 		if ( $node == null) {
 			return new Node( $key, $val );
@@ -40,19 +47,34 @@ class BST
 
 		if ( $key == $node->key ) {
 			$node->value = $val;
-		} else if ( $key < $node->key) {
-			$node->left = $this->insert( $node->left, $key, $val );
+		} elseif ( $key < $node->key) {
+			$node->left  = $this->insert( $node->left, $key, $val );
 		} else {
-
+			$node->right = $this->insert( $node->right, $Key, $val );
 		}
 		// @TODO: TBD
+		$this->size ++;
 		return $node;
 	}
 
 	// return node
-	public function search() 
+	public function search( Node $node, Int $val ) 
 	{
-		
+		if ( $node == null ) {
+			return null;
+		}
+
+		if ( $node->val == $val ) {
+			return $node;
+		}	
+
+		if ( $val < $node->val ) {
+			return $this->search( $node->left, $val );
+		}
+
+		if ( $val > $node->val ) {
+			return $this->search( $node->right, $val );
+		}
 	}
 
 	// similar to search
@@ -63,21 +85,10 @@ class BST
 	}
 
 	/**
-	 * 前，中，后序遍历
+	 * DFS: 前，中，后序遍历 ( pre-order, in-order, post-order )
+	 * BFS: with stack
+	 * @helpers.php
 	 */
-	public function dfs() 
-	{
-		$order = [
-			'preOrder',
-			'inOrder', // 从小到大，输出
-			'postOrder', // 空间释放， 左右子树贤释放，最后释放根
-		];	
-	}
-
-	public function bfs() 
-	{
-		
-	}
 
 	/**
 	 *  return key
