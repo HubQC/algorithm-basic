@@ -1,9 +1,11 @@
 <?php
 
-namespace Algorithm\Heap;
+namespace Algorithm\Heap\MaxHeap;
+
+use Alogrithm\Heap\Heap;
 
 // 最大堆
-class MaxHeap
+class MaxHeap extends Heap
 {
 	// for node(i)
 	// parent(i)   = i / 2;
@@ -25,17 +27,7 @@ class MaxHeap
 	//       /
 	//      7
 
-	private $heap = [];
-	private $size = -1;
-
 	// @TODO: optimize for array_swap
-
-	public function __construct ()
-	{
-		$this->size = 0;
-		$this->heap[] = 0;
-	}
-
 	public function insert ( $item )
 	{
 		$this->heap[] = $item;
@@ -55,12 +47,6 @@ class MaxHeap
 		$this->shiftDown( 1 );
 
 		return $max;
-	}
-
-	public function getSize ()
-	{
-		// return $this->size;
-		return count($this->heap);
 	}
 
 	private function shiftUp ( $index )
@@ -91,16 +77,4 @@ class MaxHeap
 			$index = $largerChild;
 		}
 	}
-
-	// @TODO: print tree on page
-	public function treePrint ()
-	{
-		
-	}
-
-	public function __toString ()
-	{
-		return __METHOD__;
-	}
-
 }

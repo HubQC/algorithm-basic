@@ -2,7 +2,10 @@
 
 namespace Algorithm\Heap;
 
-class HeapSort
+use Algorithm\Heap\MaxHeap\MaxHeap as MaxHeap;
+use Algorithm\Heap\MinHeap\MinHeap as MinHeap;
+
+class Sort
 {
 
     private $size;
